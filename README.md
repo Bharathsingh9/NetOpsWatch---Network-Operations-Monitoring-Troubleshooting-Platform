@@ -1,4 +1,4 @@
-# NetOpsWatch 🌐🔍
+# NetOpsWatch - Network Operations Monitoring & Troubleshooting Platform
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
@@ -15,7 +15,7 @@ NetOpsWatch is a full-stack, production-ready network operations tool engineered
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
 - [System Architecture](#-system-architecture)
 - [Core Features & Technical Depth](#-core-features--technical-depth)
@@ -34,7 +34,7 @@ NetOpsWatch is a full-stack, production-ready network operations tool engineered
 
 ---
 
-## 🏛 System Architecture
+## System Architecture
 
 NetOpsWatch uses a clean service-repository pattern with decoupled background telemetry collection, asynchronous I/O, and a glassmorphic NOC frontend.
 
@@ -93,7 +93,7 @@ flowchart TB
 
 ---
 
-## 🚀 Core Features & Technical Depth
+## Core Features & Technical Depth
 
 ### 1. Real Multi-Protocol Network Probing Engine
 *No mocked data* — the platform executes live networking system calls and socket operations:
@@ -123,7 +123,7 @@ flowchart TB
 
 ---
 
-## 🧠 Diagnostic Reasoning Engine
+## Diagnostic Reasoning Engine
 
 One of the flagship features of NetOpsWatch is its **Heuristic Diagnostic Reasoning Engine** (`backend/app/networking/diagnostic_engine.py`). Rather than leaving raw numbers to human interpretation, the engine tests multiple layers simultaneously and applies deterministic network triage heuristics:
 
@@ -138,7 +138,7 @@ One of the flagship features of NetOpsWatch is its **Heuristic Diagnostic Reason
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Backend
 - **Language**: Python 3.10+
@@ -161,7 +161,7 @@ One of the flagship features of NetOpsWatch is its **Heuristic Diagnostic Reason
 
 ---
 
-## 📂 Project Directory Structure
+## Project Directory Structure
 
 ```text
 d:\Network\
@@ -224,7 +224,7 @@ d:\Network\
 
 ---
 
-## ⚡ Getting Started
+## Getting Started
 
 ### Prerequisites
 - **Python 3.10+**
@@ -296,7 +296,7 @@ Explore the interactive Swagger API documentation at: **`http://127.0.0.1:8000/d
 
 ---
 
-## 🔑 Demo Credentials
+## Demo Credentials
 
 The platform comes pre-seeded with three Role-Based Access Control (RBAC) tiers:
 
@@ -308,7 +308,7 @@ The platform comes pre-seeded with three Role-Based Access Control (RBAC) tiers:
 
 ---
 
-## 📡 REST API Reference
+## REST API Reference
 
 NetOpsWatch exposes a fully documented, type-safe REST API:
 
@@ -345,7 +345,7 @@ NetOpsWatch exposes a fully documented, type-safe REST API:
 
 ---
 
-## 🧪 Running Automated Tests
+## Running Automated Tests
 
 NetOpsWatch includes extensive test coverage across network probing logic and REST API routes:
 
@@ -373,29 +373,7 @@ python -m pytest backend/tests -v
   - `test_diagnostics_endpoints`: Tests live execution of API diagnostic probe endpoints.
   - `test_alerts_and_incidents`: Tests alert generation and incident acknowledgment/resolution workflow.
 
----
 
-## 🎯 Interview & Resume Discussion Guide
-
-When highlighting NetOpsWatch in network engineering, DevOps, or SRE interviews, focus on these real-world engineering decisions:
-
-1. **Root Cause Heuristics vs Simple Thresholds**:
-   > *"I didn't just write a ping monitor. NetOpsWatch runs a multi-layer diagnostic suite. If ICMP is failing but TCP 443 connects, the platform recognizes that the host is up and ICMP is merely firewalled. If DNS fails, it skips downstream checks to avoid misleading timeouts."*
-
-2. **TCP Three-Way Handshake Nuance**:
-   > *"I handled TCP sockets to differentiate between an `ECONNREFUSED` (server actively sent a `RST` packet, meaning the OS is reachable but the process is dead) versus a connection timeout (packet was dropped silently by an ACL or stateful firewall)."*
-
-3. **Decoupled Asynchronous Polling**:
-   > *"Using FastAPI with async/await and APScheduler ensures that long-running network timeouts never block the main event loop or slow down user interaction in the NOC dashboard."*
-
-4. **Production Incident Lifecycle**:
-   > *"Alerting without deduplication causes alert fatigue. NetOpsWatch links alerts directly into a state machine: incidents must be acknowledged by an operator, annotated with notes, and explicitly resolved with audit logging."*
-
-5. **SNMP MIB-II Walk**:
-   > *"Integrated PySNMP 7 to retrieve standard OIDs like sysDescr (`1.3.6.1.2.1.1.1.0`) and interface octets to calculate real network throughput and link utilization."*
-
----
-
-## 📄 License
+## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
